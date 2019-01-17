@@ -1,0 +1,70 @@
+FCMCNDP 
+
+A cycle-based evolutionary algorithm for the fixed-charge capacitated multi-commodity network design problem
+Presente le probleme : FCMCNDP : fixed-charge capacitated multi-commodity network design problem
+Biblio : metaheuristique (recuit, algo gene, scatter search (SS),...), generation de colonne, MIP
+Proposition : Evolutionary algo basé sur : SS, recherche locale, les chaines/cycles d'ejection
+max : 100 noeuds, 400 commodité, 700 arcs
+
+
+The congested multicommodity network design problem
+FCMCNDP avec prise en compte de la congestion aux noeud
+Modele exact non lineaire + algo evolutionnaire
+max : 100 noeuds, 400 commodité, 700 arcs
+
+
+A COMBINED CAPACITY SCALING AND LOCAL BRANCHING APPROACH FOR CAPACITATED MULTI-COMMODITY NETWORK DESIGN PROBLEM
+capacity scaling : heuristique ou on fait bouger petit à petit les capacités
+local branching : MIP ou ont ne peut faire varier que peu de variable autour d'une solution connue
+max : 100 noeuds, 400 commodité, 700 arcs
+
+
+A parallel local search framework for the Fixed-Charge Multicommodity Network Flow problem
+modification locale : MIP avec les flots de certaines commodités fixées
+plein de modification essayée en parallele (sur des parties disjointes du problème?)
+max : 100 noeuds, 400 commodité, 700 arcs ou 3000 arcs 200 commodités
+
+
+
+
+
+ALGO GENETIQUE ET RELAXATION LAGRANGIENNE
+
+Unit Commitment by Lagrangian Relaxation and Genetic Algorithms
+and
+Lagrangian relaxation hybrid with evolutionary algorithm for short-term generation scheduling
+Les deux papiers proposent de faire evoluer les multiplicateurs de lagrange avec un algo gene pour augmenter la stabilité
+
+
+
+
+
+
+NETWORK DESIGN
+
+A survey on benders decomposition applied to fixed-charge network design problems
+Description de la decomposition de benders
+Description de plusieur probleme de network design
+Survey : application de benders au network design
+
+
+Network Synthesis and Optimum Network Design Problems: Models, Solution Methods and Applications
+Survey de problme de network design (plusieurs sous probleme de flow)
+Presentation de méthode de résolution pour chacun
+Non lu
+
+
+Network Design and Transportation Planning: Models and Algorithms
+Survey sur le network design : plusieurs modéle et methodes (heuristique MIP benders...)
+Non lu
+
+
+
+An Iterative Rounding 2-Approximation Algorithm for the Element Connectivity Problem
+Network design sur les routes de back up
+
+
+MULTI-COMMODITY MULTI-FACILITY NETWORK DESIGN
+Describe several cuts
+
+
