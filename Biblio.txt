@@ -28,6 +28,16 @@ max : 100 noeuds, 400 commodité, 700 arcs ou 3000 arcs 200 commodités
 
 
 
+
+CSP + META HEURISTIQUE
+
+Using Constraint Programming and Local Search Methods to Solve Vehicle Routing Problems
+Un CSP est utilisé pour trouver la meilleur affectation de variables qui viennent d'être relaxée.
+
+
+
+
+
 ALGO GENETIQUE ET RELAXATION LAGRANGIENNE
 
 Unit Commitment by Lagrangian Relaxation and Genetic Algorithms
@@ -66,5 +76,51 @@ Network design sur les routes de back up
 
 MULTI-COMMODITY MULTI-FACILITY NETWORK DESIGN
 Describe several cuts
+
+
+
+
+
+Large neiborhood seach
+Constraint based local search
+toulouse optimisation hybrid methods Paul Shaw
+
+
+
+
+
+MCNF (multicommodity flow)
+
+USING BRANCH-AND-PRICE-AND-CUT TO SOLVE ORIGIN-DESTINATION INTEGER MULTICOMMODITY FLOW PROBLEMS
+BRANCH-AND-PRICE-AND-CUT = column and row generation at each node of the branch and bound tree ---> very strong LP relaxations
+Cuts are there to avoid symetries in the problem
+Special branching strategie is used so that the pricing problem can be done with shortest path
+
+
+Comparing Branch-and-price Algorithms for the Unsplittable Multicommodity Flow Problem
+Propose generation de colonne : formulation par chemin et par sac à dos
+Formulation chemins : Proposition d'une nouvelle regle de branchement plus performante que celle de l'article précédent
+Formulation par sac à dos : nouvelle formulation : relaxation plus forte mais beaucoup plus dure à résoudre
+CPLEX is faster than column generation
+
+
+
+
+
+Schèma d'approxiamtion pour MCNF
+
+Faster and simpler algorithms for multicommodity flow and other fractionnal packing problems
+Simple and fast distributed multicommodity flow algorithm
+Improved approximation algorithms for the multicommodity flow problem and local competitive routing in dynamic networks
+Faster Approximate Multicommodity FlowUsing Quadratically Coupled Flows
+
+
+
+
+Restricted shortest path
+
+approximation schemes for the restricted shortest path problem
+
+
 
 
