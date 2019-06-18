@@ -1,4 +1,4 @@
-FCMCNDP 
+FCMCNDP : Fixed charged capacited multi-commodity network design problem
 
 A cycle-based evolutionary algorithm for the fixed-charge capacitated multi-commodity network design problem
 Presente le probleme : FCMCNDP : fixed-charge capacitated multi-commodity network design problem
@@ -6,26 +6,29 @@ Biblio : metaheuristique (recuit, algo gene, scatter search (SS),...), generatio
 Proposition : Evolutionary algo basé sur : SS, recherche locale, les chaines/cycles d'ejection
 max : 100 noeuds, 400 commodité, 700 arcs
 
-
 The congested multicommodity network design problem
 FCMCNDP avec prise en compte de la congestion aux noeud
 Modele exact non lineaire + algo evolutionnaire
 max : 100 noeuds, 400 commodité, 700 arcs
-
 
 A COMBINED CAPACITY SCALING AND LOCAL BRANCHING APPROACH FOR CAPACITATED MULTI-COMMODITY NETWORK DESIGN PROBLEM
 capacity scaling : heuristique ou on fait bouger petit à petit les capacités
 local branching : MIP ou ont ne peut faire varier que peu de variable autour d'une solution connue
 max : 100 noeuds, 400 commodité, 700 arcs
 
-
 A parallel local search framework for the Fixed-Charge Multicommodity Network Flow problem
 modification locale : MIP avec les flots de certaines commodités fixées
 plein de modification essayée en parallele (sur des parties disjointes du problème?)
 max : 100 noeuds, 400 commodité, 700 arcs ou 3000 arcs 200 commodités
 
+Formulations for the nonbifurcated hop-constrained multicommodity capacitated fixed-charge network design problem
+Single path multicommodity flows
+propose plusieurs formulation et compare leur rexation linéaire et lagrangienne
+Ne précise pas quelle relaxation marche le mieux dans un solver
 
-
+Revisiting Lagrangian relaxation for network design
+Propose un modele général qui englobe plein de problème de network design
+Donne des critéres théorique qui permettent de comparer la relaxation des contraintes de flot et des contraintes de capacité
 
 
 
@@ -43,7 +46,7 @@ ALGO GENETIQUE ET RELAXATION LAGRANGIENNE
 Unit Commitment by Lagrangian Relaxation and Genetic Algorithms
 and
 Lagrangian relaxation hybrid with evolutionary algorithm for short-term generation scheduling
-Les deux papiers proposent de faire evoluer les multiplicateurs de lagrange avec un algo gene pour augmenter la stabilité
+Les deux papiers proposent de faire evoluer les multiplicateurs de lagrange avec un algo genetique pour augmenter la stabilité de la méthode
 
 
 
@@ -57,22 +60,17 @@ Description de la decomposition de benders
 Description de plusieur probleme de network design
 Survey : application de benders au network design
 
-
 Network Synthesis and Optimum Network Design Problems: Models, Solution Methods and Applications
 Survey de problme de network design (plusieurs sous probleme de flow)
 Presentation de méthode de résolution pour chacun
 Non lu
 
-
 Network Design and Transportation Planning: Models and Algorithms
 Survey sur le network design : plusieurs modéle et methodes (heuristique MIP benders...)
 Non lu
 
-
-
 An Iterative Rounding 2-Approximation Algorithm for the Element Connectivity Problem
 Network design sur les routes de back up
-
 
 MULTI-COMMODITY MULTI-FACILITY NETWORK DESIGN
 Describe several cuts
@@ -81,21 +79,133 @@ Describe several cuts
 
 
 
-Large neiborhood seach
-Constraint based local search
-toulouse optimisation hybrid methods Paul Shaw
+
+Restricted shortest path
+
+Approximation schemes for the restricted shortest path problem
 
 
 
 
 
-MCNF (multicommodity flow)
+
+
+AMAS
+
+Extending Q-learning to general adaptive multi-agent systems
+Q-learning is used to learn mixed-strategies (as in game theory) versus adptive opponent in rock-paper-scissors
+
+Tuning meta-heuristics using multi-agent learning in a scheduling problem
+Un systeme multi agent est utilisé, chaque agent utilise une meta-heuristique pour resoudre son sous problem ainsi qu'une CBR
+CBR = Case based Reasoning = stockage des anciennes instances avec la maniére de les résoudre pour améliorer la résolution des nouvelles
+instances (ca à l'air brute force)
+
+The AMAS theory for complex problem solving based on self organising cooperative agents
+très théorique (aucune application)
+Présente la théorie AMAS : plusieurs agents, décomposition de la fonction objectif, language de communication, résoudre les situations non 
+coopérative, ...
+Théorme : "le systeme multi-agent peut être coopératif avec un internal medium" (à peut près)
+
+Self-Organisation and Emergence in MAS: An Overview
+Discusion sur l'emergence en Multi-agent
+Différent type de comportement:
+Communication directe : message, interaction locale
+Communication indirecte (stigmergy) : changement de l'environnement pour laisser une trace
+Renforcement : reward donné aux agents suivant leur comportement (permet la différenciation)
+Coop:
+Generic architecture :
+
+Self-Organizing Spatial Shapes in Mobile Particles: The TOTA Approach
+TOTA : communication via locals messages that have propagation rules (they can also change during the propogation)
+Use of gradients (difference in length of gradient messages) to determine direction to follow, distances
+Computing of local density...
+Used to make particules self organise in shapes using nothing else but gradient messages (circle, ring , polygons)
+
+
+
+
+
+
+Reinforcement Learning
+
+Evolution Strategies as a Scalable Alternative to Reinforcement Learning
+An Evolution Strategie is used to train Deep Neural Net
+ES = a distribution of neural net parametrized by x is optimized by gradient descent
+Gradient w.r.t. x is evaluated by sampling nets and evaluating their performances directy by simulation (keeping only a few best?)
+Virtual batch normalization is used
+The method is highly parralelizable
+Method : less data efficient, faster computing per data (no backprop)
+
+Rainbow RL
+6 improvment of DQN are combined:
+- Double DQN = action choice and action evaluation are decorelated to prevent overestimation of the performance
+- Prioritized sampling DQN = samples that we have still the most to learn from are considered more often
+- Dueling DQN
+- A3C = multi-step DQN
+- Distributionnal DQN = a distribution is learned for action pairs instead of mean value
+- Noisy DQN = noise is added to the deep neural net layers to add exploration
+Most important features : Prioritized,Multi-step > Distributional > Noisy  > others
+Overall Rainbow perform really well on Atary an humanoid walking
+
+
+
+
+
+
+RO et ML
+
+Predicting Tactical Solutions to Operational PlanningProblems under Imperfect Information
+L'etat est composé d'une partie connue et d'une inconnue x = (xc, xi)
+La solution est y(x) et ils cherchent y(xc) : la solution la plus proche de y(x) suivant la distribution sur xi
+L'apprentissage supervisé est utilisé pour apprendre y(xc)
+
+NEURAL COMBINATORIAL OPTIMIZATION WITH REINFORCEMENT LEARNING
+Resolve le TSP avec du RL. Utilise un reseau de neuronnes recurent pour determiner une distribution
+sur la prochaine ville à visiter en fonction des villes déja visitées.
+La reward est la taille du tour de TSP.
+Comparaison de 4 algo :
+1) Supervaised Learnig de Vinyals et al 2015
+2) RL pretraining : apprentissage sur plein d'instance du TSP, comme la solution est une distribution du sampling est effectue sur le reseau appris
+3) Active search : apprend à chaque fois sur l'instance proposée à partir du rien
+4) Pretraining + active search : utilise le réseau pre-entrainé puis apprend sur l'instance en plus pour se spécialiser
+méthode: 4 > 2 >> 3 >> 1
+
+Optimal Decision Trees for Categorical Data via Integer Programming
+Des arbres de décision de petite taille sont modéliser et résolue avec des MILP.
+Un modele est proposé + amélioration (briser les symétrie...)
+Possibilité de faire apprendre la structure de l'arbre en partie.
+Nb variable entiére indépendant de la taille du data set mais pas le nb de varaibles continues
+
+
+
+
+Single source unsplittable flow (SSUF)
+
+Single-Source  Unsplittable Flow
+Mentionne que les unsplitable flow sont à la fois des problemes de routing et de packing
+Propose des algorithme d'approximation
+
+Improved approximation algorithms for unsplittable flow problems
+Donne des algorithmes d'approximation
+Montre que le IMCNF ne peux pas s'approcher par un ratio de moins de 2 si P!=NP pour la congestion max
+
+ON THE SINGLE-SOURCE UNSPLITTABLE FLOW PROBLEM
+Construction d'un unsplitable flow à partir d'un flow en ne faisant depasser la capacité que par une seule commodité
+Propose plusieurs algorithme d'approximation :
+2 pour la congestion max
+5 pour le nombre de round
+22.6% pour la demande totale
+
+
+
+
+
+IMCNF (integer/unsplittable multicommodity flow)
 
 USING BRANCH-AND-PRICE-AND-CUT TO SOLVE ORIGIN-DESTINATION INTEGER MULTICOMMODITY FLOW PROBLEMS
 BRANCH-AND-PRICE-AND-CUT = column and row generation at each node of the branch and bound tree ---> very strong LP relaxations
 Cuts are there to avoid symetries in the problem
 Special branching strategie is used so that the pricing problem can be done with shortest path
-
 
 Comparing Branch-and-price Algorithms for the Unsplittable Multicommodity Flow Problem
 Propose generation de colonne : formulation par chemin et par sac à dos
@@ -103,24 +213,101 @@ Formulation chemins : Proposition d'une nouvelle regle de branchement plus perfo
 Formulation par sac à dos : nouvelle formulation : relaxation plus forte mais beaucoup plus dure à résoudre
 CPLEX is faster than column generation
 
+An ant colony optimization metaheuristic for single-path multicommodity network flow problems
+Une colonie de fournie est proposé (une fourmi par commodité)
+Instance jusqu'à 60 noeuds, 386 arcs et 3540 commodités
+Les pheromones s'évapore et sont ajoutées sur le meilleur chemins de chaque commodité
+
+An ant colony optimization metaheuristic for solving bi-objective multi-sources multicommodity communication flow problem
+Un problème bi-objctif de flow multicommodité est considéré et résolu par colonie de fourmis
+Les phéromone s'évapore et sont ajouté sur les solutions non dominées en fonction de leur qualité
+
+A multi-start variable neighborhood search for solving the single path multicommodity flow problem
+VNS : on cherche dans un petit voisinage et si on ne s'améliore pas on cherche dans un voisinage plus gros
+Le probleme parle de plusieur sources par commodité et il faut en choisir une mais j'ai l'impression que la création 
+d'une super source par commodité devrait ramener au cas précedent
+On suppose que chaque commodité à le choix entre n chemins connus et le voisinage consiste à changer le chemins de k commodités
+Ce vosinage sert à "secouer" la solution. Une recherche locale est ensuite effectué
+Je ne sais pas si les n choix possibles sont changés dans l'algorihtme. Ils sont initialisé avec un algorithme de k_plus_court_chemins
+Comparaison des résultats avec la colonie de fourmi (2 article au dessus). De meilleur résutats sont trouvés
+
+Metaheuristics for solving the biobjective single path munticommodity communication flow problem
+Trois metaheuristiques et un modele non-linéaire sont proposés
+Une algo génétique multi-objectif
+Un local search (VNS)
+Une hybridation entre les deux premiers, le but est de chercher au alentours des solutions les moins "crowded"
+L'hybridation donne les meilleurs résultats avec des solutions couvrant mieux le front de pareto et meilleures
+
+Experimental Evaluation of ApproximationAlgorithms for the Minimum Cost Multiple-source Unsplittable Flow Problem
+Présente plusieurs algorithmes et les compare numériquement
+En particulier, présente un schéma d'approximation de facteur (k+2) où k en le nombre de commodité. L'algorithme est une adaptation d'un algo single source unsplittable flow
+
+Improved Bounds for the UnsplittableFlow Problem
+Donne un algorithme d'approximation de ratio O(F) = O(D a^(-1) log(n)) pour les graphes à capacité constante
+Voir en dessous pour une amélioration et plus détails
+
+Approximation Algorithms for the Unsplittable Flow Problem
+Ameliore l'algorithme précédent
+Propose un algorithme d'approximation de facteur  O((F log(n))^(1/B)) où F est le flow number et où B est un entier tel que d_max <= c_min / B
+F = O(D a^(-1) log(n)) où D est le degré max, a est l'expansion du graph
+Est efficace sur les graphes expanseurs : D a^(-1) = O(1) mais ce n'est pas notre cas
+A relire
+
+Multicommodity Network Flows : A Survey, Part II : Solution Methods
+Propose un survey de beaucoup de méthodes sur le problème de flot multicommodité
+Mais toutes les méthodes sont assez vieilles
+
+
+A Constant Factor Approximation Algorithm for Unsplittable Flow on Paths
+A(1 + eps)-Approximation for Unsplittable Flow on a Path in Fixed-Parameter Running Time
 
 
 
 
-Schèma d'approxiamtion pour MCNF
+
+Schèma d'approxiamtion pour multicommodity flow
 
 Faster and simpler algorithms for multicommodity flow and other fractionnal packing problems
+Associe des poids à chaque arête : exponentielle en la congestion de l'arete.
+Algorithme : 
+Trouver le plus court chemin P entre toutes les pairs de terminaux
+Augmenter le chemin de c_min jusqu'à atteindre la capacité d'une arête
+Multiplier la longueur des arêtes e de P par 1 + eps * c_min / c_e
+
+APPROXIMATING FRACTIONAL MULTICOMMODITY FLOW INDEPENDENT OF THE NUMBER OF COMMODITIES
+Améliore l'algorithme précédent : au lieu de calculer le plus court chemin entre toutes les pairs, 
+on se contente d'un chemin à 1 + eps du plus court
+Cette algorithme est le plus rapide en pratique (sauf peut être approx par flot quadratique) 
+même si l'algorithme suivant à une meilleure compléxité
+
+Faster Approximation Schemes for Fractional MulticommodityFlow Problems via Dynamic Graph Algorithms
+Amélioration des deux algorithmes précédents
+Plus rapide en théorie (compléxité) mais est vraiment moins bon en pratique d'aprés l'article suivant
+
+Approximating multi-commoditymax-flow in practice
+Compare les deux algorithmes précédant.
+Le premier est plus rapide en pratique, le deuxiéme a une meilleure complexité
+
+Faster Approximate Multicommodity Flow Using Quadratically Coupled Flows
+Remplacement de la contrainte de capacité par une contrainte quadratique
+Le probleme quadratique est résolu de manière itérée.
+Publié récément, ne precise pas (je crois) dans quels cas l'algorithme est efficace. (surement lorsqu'il y a peu de commodité)
+
 Simple and fast distributed multicommodity flow algorithm
 Improved approximation algorithms for the multicommodity flow problem and local competitive routing in dynamic networks
-Faster Approximate Multicommodity FlowUsing Quadratically Coupled Flows
 
 
 
 
-Restricted shortest path
+Kapsack problems
 
-approximation schemes for the restricted shortest path problem
+A Fast and Scalable Multi-dimensional Multiple-choice KnapsackHeuristic
+Multichoice : chaque categorie contient plusieurs objets, il faut choisir un objet par catégorie
+Ils proposent une heuristique basé sur le principe suivant : une nouvelle catégorie peut être créée pour remplacer deux catégories.
+Il faut que cette catégorie contiennent toutes les combinaison d'objet des anciennes catégories.
+L'idée de l'heuristique est de combiner les catégories au fur et a mesure.  Si l'on garde toutes les combinaisons le nombre d'objet par catégorie explose.
+On ne conserve donc que certaines combinaisons, repartie sur le front de pareto de la catégorie.
 
-
-
-
+A Genetic Algorithm for the Multidimensional Knapsack Problem
+Discrete OptimizationA ‘‘reduce and solve’’ approach for the multiple-choice multidimensionalknapsack problem
+An iterative pseudo-gap enumeration approach for the Multidimensional Multiple-choice Knapsack Problem
